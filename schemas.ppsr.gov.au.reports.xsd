@@ -1,0 +1,798 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.ppsr.gov.au/reports" elementFormDefault="qualified" targetNamespace="http://schemas.ppsr.gov.au/reports" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="AccountCustomer">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AccountCustomerIdentifier" nillable="true" type="xs:string" />
+      <xs:element name="AccountCustomerNumber" nillable="true" type="xs:string" />
+      <xs:element name="AccountCustomerStatus" nillable="true" type="xs:string" />
+      <xs:element name="ChannelType" nillable="true" type="xs:string" />
+      <xs:element name="ContactEmail" nillable="true" type="xs:string" />
+      <xs:element name="ContactName" nillable="true" type="xs:string" />
+      <xs:element name="ContactPhone" nillable="true" type="xs:string" />
+      <xs:element name="OrganisationName" nillable="true" type="xs:string" />
+      <xs:element name="PaymentMethod" nillable="true" type="xs:string" />
+      <xs:element name="RegistrationKind" nillable="true" type="xs:string" />
+      <xs:element name="TotalRegistrationsCreated" type="xs:int" />
+      <xs:element name="TotalSearches" type="xs:int" />
+      <xs:element name="UserNames" nillable="true" type="tns:ArrayOfCollectionItem" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AccountCustomer" nillable="true" type="tns:AccountCustomer" />
+  <xs:complexType name="ArrayOfCollectionItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CollectionItem" nillable="true" type="tns:CollectionItem" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCollectionItem" nillable="true" type="tns:ArrayOfCollectionItem" />
+  <xs:complexType name="CollectionItem">
+    <xs:sequence>
+      <xs:element name="Name" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CollectionItem" nillable="true" type="tns:CollectionItem" />
+  <xs:complexType name="VexatiousRegistration">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ChangeDateTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ChangeNumber" nillable="true" type="xs:string" />
+      <xs:element name="ChangeType" nillable="true" type="xs:string" />
+      <xs:element name="CollateralClass" nillable="true" type="xs:string" />
+      <xs:element name="RegistrationNumber" nillable="true" type="xs:string" />
+      <xs:element name="StartDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element name="UserName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="VexatiousRegistration" nillable="true" type="tns:VexatiousRegistration" />
+  <xs:complexType name="BaseReportOutputType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="B2GCustomersUserDefinedFields" nillable="true" type="tns:ArrayOfB2GCustomersUserDefinedField" />
+      <xs:element name="Environment" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ReportDatabaseUpdatedDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element name="ReportName" nillable="true" type="xs:string" />
+      <xs:element name="ReportNumber" nillable="true" type="xs:string" />
+      <xs:element name="ReportProducedDateTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ReportRequestedAccountCustomerName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ReportRequestedAccountCustomerNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ReportRequestedB2GAccountCustomerLocation" nillable="true" type="xs:string" />
+      <xs:element name="ReportRequestedUsername" nillable="true" type="xs:string" />
+      <xs:element name="ReportType" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BaseReportOutputType" nillable="true" type="tns:BaseReportOutputType" />
+  <xs:complexType name="ArrayOfB2GCustomersUserDefinedField">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="B2GCustomersUserDefinedField" nillable="true" type="tns:B2GCustomersUserDefinedField" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfB2GCustomersUserDefinedField" nillable="true" type="tns:ArrayOfB2GCustomersUserDefinedField" />
+  <xs:complexType name="B2GCustomersUserDefinedField">
+    <xs:sequence>
+      <xs:element name="FieldName" nillable="true" type="xs:string" />
+      <xs:element name="FieldValue" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="B2GCustomersUserDefinedField" nillable="true" type="tns:B2GCustomersUserDefinedField" />
+  <xs:complexType name="AccountCustomerReportOutputType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseReportOutputType">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AccountCustomers" nillable="true" type="tns:ArrayOfAccountCustomer" />
+          <xs:element name="ReportCriteria" nillable="true" type="tns:AccountCustomerReportCriteriaType" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="AccountCustomerReportOutputType" nillable="true" type="tns:AccountCustomerReportOutputType" />
+  <xs:complexType name="ArrayOfAccountCustomer">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="AccountCustomer" nillable="true" type="tns:AccountCustomer" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfAccountCustomer" nillable="true" type="tns:ArrayOfAccountCustomer" />
+  <xs:complexType name="AccountCustomerReportCriteriaType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AccountCustomerIdentifier" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AccountCustomerIdentifierType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AccountCustomerName" nillable="true" type="xs:string" />
+      <xs:element name="AccountCustomerNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AccountCustomerOrganisationName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AccountCustomerStatus" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RegistrationKind" nillable="true" type="xs:string" />
+      <xs:element name="SortBy" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TransactionFromDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="TransactionToDate" nillable="true" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AccountCustomerReportCriteriaType" nillable="true" type="tns:AccountCustomerReportCriteriaType" />
+  <xs:complexType name="CurrentRegistrationsForSPGReportOutputType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseReportOutputType">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CurrentCollateralRegistrations" nillable="true" type="tns:ArrayOfCurrentRegistrationsForSPG" />
+          <xs:element name="ReportCriteria" nillable="true" type="tns:CurrentRegistrationsForSPGReportCriteriaType" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CurrentRegistrationsForSPGReportOutputType" nillable="true" type="tns:CurrentRegistrationsForSPGReportOutputType" />
+  <xs:complexType name="ArrayOfCurrentRegistrationsForSPG">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CurrentRegistrationsForSPG" nillable="true" type="tns:CurrentRegistrationsForSPG" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCurrentRegistrationsForSPG" nillable="true" type="tns:ArrayOfCurrentRegistrationsForSPG" />
+  <xs:complexType name="CurrentRegistrationsForSPG">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AreAssetsSubjectToControl" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AreProceedsClaimed" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AttachmentCount" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="ChangeNumber" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="ChangeTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="CollateralClass" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CollateralDescription" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CollateralType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EarlierRegistrationNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="GivingOfNoticeIdentifier" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Grantors" nillable="true" type="tns:ArrayOfGrantor" />
+      <xs:element minOccurs="0" name="GrantorsText" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsAccessRestricted" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsInventory" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsMigrated" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsPMSI" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsPreparatory" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsSerialised" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsSubordinate" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsTransitional" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ProceedsClaimedDescription" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RegistrationEndTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="RegistrationKind" nillable="true" type="xs:string" />
+      <xs:element name="RegistrationNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RegistrationStartTime" nillable="true" type="xs:dateTime" />
+      <xs:element name="SecuredPartyGroupNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SerialNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SerialNumberType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SourceRegister" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CurrentRegistrationsForSPG" nillable="true" type="tns:CurrentRegistrationsForSPG" />
+  <xs:complexType name="ArrayOfGrantor">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Grantor" nillable="true" type="tns:Grantor" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfGrantor" nillable="true" type="tns:ArrayOfGrantor" />
+  <xs:complexType name="Grantor">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="FamilyName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="GivenNames" nillable="true" type="xs:string" />
+      <xs:element name="GrantorType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OrganisationName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OrganisationNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OrganisationNumberType" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Grantor" nillable="true" type="tns:Grantor" />
+  <xs:complexType name="CurrentRegistrationsForSPGReportCriteriaType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="SecuredPartyGroupAccessCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SecuredPartyGroupNumber" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CurrentRegistrationsForSPGReportCriteriaType" nillable="true" type="tns:CurrentRegistrationsForSPGReportCriteriaType" />
+  <xs:complexType name="PendingApplicationsReportCriteriaType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AccountCustomerNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="InternalOrganisationID" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="InternalOrganisationName" nillable="true" type="xs:string" />
+      <xs:element name="SortBy" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserType" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PendingApplicationsReportCriteriaType" nillable="true" type="tns:PendingApplicationsReportCriteriaType" />
+  <xs:complexType name="IndividualGrantor">
+    <xs:sequence>
+      <xs:element name="DateOfBirth" nillable="true" type="xs:dateTime" />
+      <xs:element name="FamilyName" nillable="true" type="xs:string" />
+      <xs:element name="GivenName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="VexatiousRegistrations" nillable="true" type="tns:ArrayOfVexatiousRegistration" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="IndividualGrantor" nillable="true" type="tns:IndividualGrantor" />
+  <xs:complexType name="ArrayOfVexatiousRegistration">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="VexatiousRegistration" nillable="true" type="tns:VexatiousRegistration" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfVexatiousRegistration" nillable="true" type="tns:ArrayOfVexatiousRegistration" />
+  <xs:complexType name="SecuredPartyGroupRegistrationActivity">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BillingReference" nillable="true" type="xs:string" />
+      <xs:element name="CanViewRegistrationDetails" type="xs:boolean" />
+      <xs:element minOccurs="0" name="ChangeNumber" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="ChangeTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="CollateralClass" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CollateralType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="GivingOfNoticeIdentifier" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Grantors" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="GrantorsList" nillable="true" type="tns:ArrayOfGrantor" />
+      <xs:element name="IsAccessRestricted" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsArchived" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsLogicallyRemoved" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsMigrated" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsTransitional" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="OrganisationName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RegistrationEndTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="RegistrationKind" nillable="true" type="xs:string" />
+      <xs:element name="RegistrationNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RegistrationStartTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="SecuredPartyGroupNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SerialNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SerialNumberType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TransactionFee" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TransactionType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SecuredPartyGroupRegistrationActivity" nillable="true" type="tns:SecuredPartyGroupRegistrationActivity" />
+  <xs:complexType name="AccountCustomerException">
+    <xs:sequence>
+      <xs:element name="AccountCustomerNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MaxNumberOfRegistrationTransactions" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MaxNumberOfSearchTransactions" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TotalNumberOfRegistrationTransactions" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TotalNumberOfSearchTransactions" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TransactionDate" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AccountCustomerException" nillable="true" type="tns:AccountCustomerException" />
+  <xs:complexType name="UserManagementReportOutputType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseReportOutputType">
+        <xs:sequence>
+          <xs:element name="CountOfActiveUsers" type="xs:int" />
+          <xs:element name="CountOfInactiveUsers" type="xs:int" />
+          <xs:element name="CountOfLockedUsers" type="xs:int" />
+          <xs:element name="CountOfRemovedUsers" type="xs:int" />
+          <xs:element name="ReportCriteria" nillable="true" type="tns:UserManagementReportCriteriaType" />
+          <xs:element minOccurs="0" name="Users" nillable="true" type="tns:ArrayOfUserManagement" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="UserManagementReportOutputType" nillable="true" type="tns:UserManagementReportOutputType" />
+  <xs:complexType name="UserManagementReportCriteriaType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AccountCustomerNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="InternalOrganisationID" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="InternalOrganisationName" nillable="true" type="xs:string" />
+      <xs:element name="SortBy" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserStatus" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserType" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UserManagementReportCriteriaType" nillable="true" type="tns:UserManagementReportCriteriaType" />
+  <xs:complexType name="ArrayOfUserManagement">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="UserManagement" nillable="true" type="tns:UserManagement" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfUserManagement" nillable="true" type="tns:ArrayOfUserManagement" />
+  <xs:complexType name="UserManagement">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AccountCustomerNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EmailAddress" nillable="true" type="xs:string" />
+      <xs:element name="FamilyName" nillable="true" type="xs:string" />
+      <xs:element name="GivenName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserGroups" nillable="true" type="tns:ArrayOfCollectionItem" />
+      <xs:element name="UserName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserReference" nillable="true" type="xs:string" />
+      <xs:element name="UserRoles" nillable="true" type="tns:ArrayOfCollectionItem" />
+      <xs:element name="UserStatus" nillable="true" type="xs:string" />
+      <xs:element name="UserType" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UserManagement" nillable="true" type="tns:UserManagement" />
+  <xs:complexType name="PendingApplicationsReportOutputType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseReportOutputType">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="PendingApplications" nillable="true" type="tns:ArrayOfPendingApplication" />
+          <xs:element name="ReportCriteria" nillable="true" type="tns:PendingApplicationsReportCriteriaType" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PendingApplicationsReportOutputType" nillable="true" type="tns:PendingApplicationsReportOutputType" />
+  <xs:complexType name="ArrayOfPendingApplication">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PendingApplication" nillable="true" type="tns:PendingApplication" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPendingApplication" nillable="true" type="tns:ArrayOfPendingApplication" />
+  <xs:complexType name="PendingApplication">
+    <xs:sequence>
+      <xs:element name="AccountCustomerNumber" nillable="true" type="xs:string" />
+      <xs:element name="AllocatedUserName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ApplicationNumber" nillable="true" type="xs:string" />
+      <xs:element name="CreatedDateTime" type="xs:dateTime" />
+      <xs:element name="CreatedUserName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ExpiryDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element name="OrganisationName" nillable="true" type="xs:string" />
+      <xs:element name="UserType" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PendingApplication" nillable="true" type="tns:PendingApplication" />
+  <xs:complexType name="BPointTransactionsReportCriteriaType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="OverallStatus" nillable="true" type="xs:string" />
+      <xs:element name="TransactionsFromDate" type="xs:dateTime" />
+      <xs:element name="TransactionsToDate" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BPointTransactionsReportCriteriaType" nillable="true" type="tns:BPointTransactionsReportCriteriaType" />
+  <xs:complexType name="CollateralRegistrationGrantor">
+    <xs:sequence>
+      <xs:element name="CollateralClass" nillable="true" type="xs:string" />
+      <xs:element name="CollateralType" nillable="true" type="xs:string" />
+      <xs:element name="IsTransitional" type="xs:boolean" />
+      <xs:element name="OrganisationalGrantorDetails" nillable="true" type="xs:string" />
+      <xs:element name="RegistrationEndTime" nillable="true" type="xs:dateTime" />
+      <xs:element name="RegistrationNumber" nillable="true" type="xs:string" />
+      <xs:element name="RegistrationStartTime" nillable="true" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CollateralRegistrationGrantor" nillable="true" type="tns:CollateralRegistrationGrantor" />
+  <xs:complexType name="AccountCustomerExceptionReportOutputType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseReportOutputType">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AccountCustomerExceptions" nillable="true" type="tns:ArrayOfAccountCustomerException" />
+          <xs:element name="ReportCriteria" nillable="true" type="tns:AccountCustomerExceptionReportCriteriaType" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="AccountCustomerExceptionReportOutputType" nillable="true" type="tns:AccountCustomerExceptionReportOutputType" />
+  <xs:complexType name="ArrayOfAccountCustomerException">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="AccountCustomerException" nillable="true" type="tns:AccountCustomerException" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfAccountCustomerException" nillable="true" type="tns:ArrayOfAccountCustomerException" />
+  <xs:complexType name="AccountCustomerExceptionReportCriteriaType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AccountCustomerNumber" nillable="true" type="xs:string" />
+      <xs:element name="SortBy" nillable="true" type="xs:string" />
+      <xs:element name="TransactionFromDate" type="xs:dateTime" />
+      <xs:element name="TransactionToDate" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AccountCustomerExceptionReportCriteriaType" nillable="true" type="tns:AccountCustomerExceptionReportCriteriaType" />
+  <xs:complexType name="TransactionReconciliations">
+    <xs:sequence>
+      <xs:element name="AccountCustomerNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AccountNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="B2GUserDefinedFieldName1" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="B2GUserDefinedFieldName2" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="B2GUserDefinedFieldName3" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="B2GUserDefinedFieldName4" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="B2GUserDefinedFieldName5" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="B2GUserDefinedFieldValue1" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="B2GUserDefinedFieldValue2" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="B2GUserDefinedFieldValue3" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="B2GUserDefinedFieldValue4" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="B2GUserDefinedFieldValue5" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BillingReference" nillable="true" type="xs:string" />
+      <xs:element name="Channel" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="GivingOfNoticeIdentifier" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LineItemDescription" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LineItemFeeInCents" nillable="true" type="xs:int" />
+      <xs:element name="OrganisationName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PaymentMethod" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Quantity" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="ReceiptNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RegistrationNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RegistrationStateMessage" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ReportNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SearchCertificateNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SearchNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SecuredPartyGroupNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TotalFeeInCents" nillable="true" type="xs:int" />
+      <xs:element name="TransactionDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element name="TransactionID" type="xs:long" />
+      <xs:element minOccurs="0" name="TransactionType" nillable="true" type="xs:string" />
+      <xs:element name="UserID" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TransactionReconciliations" nillable="true" type="tns:TransactionReconciliations" />
+  <xs:complexType name="AccountRegistrationActivityReportOutputType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseReportOutputType">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CollateralRegistrationTransactions" nillable="true" type="tns:ArrayOfAccountRegistrationActivity" />
+          <xs:element name="ReportCriteria" nillable="true" type="tns:AccountRegistrationActivityReportCriteriaType" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="AccountRegistrationActivityReportOutputType" nillable="true" type="tns:AccountRegistrationActivityReportOutputType" />
+  <xs:complexType name="ArrayOfAccountRegistrationActivity">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="AccountRegistrationActivity" nillable="true" type="tns:AccountRegistrationActivity" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfAccountRegistrationActivity" nillable="true" type="tns:ArrayOfAccountRegistrationActivity" />
+  <xs:complexType name="AccountRegistrationActivity">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AccountCustomerNumber" nillable="true" type="xs:string" />
+      <xs:element name="CanViewRegistrationDetails" type="xs:boolean" />
+      <xs:element minOccurs="0" name="ChangeNumber" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="ChangeTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="CollateralClass" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CollateralType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="GivingOfNoticeIdentifier" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="InternalOrganisationNumber" nillable="true" type="xs:string" />
+      <xs:element name="IsAccessRestricted" nillable="true" type="xs:boolean" />
+      <xs:element name="IsArchived" nillable="true" type="xs:boolean" />
+      <xs:element name="IsLogicallyRemoved" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsMigrated" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsTransitional" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="OrganisationName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RegistrationEndTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="RegistrationKind" nillable="true" type="xs:string" />
+      <xs:element name="RegistrationNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RegistrationStartTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="SecuredPartyGroupNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TransactionFee" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TransactionType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserID" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AccountRegistrationActivity" nillable="true" type="tns:AccountRegistrationActivity" />
+  <xs:complexType name="AccountRegistrationActivityReportCriteriaType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AccountCustomerNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CollateralClasses" nillable="true" type="tns:ArrayOfCollectionItem" />
+      <xs:element minOccurs="0" name="CollateralSubClasses" nillable="true" type="tns:ArrayOfCollectionItem" />
+      <xs:element minOccurs="0" name="CollateralTypes" nillable="true" type="tns:ArrayOfCollectionItem" />
+      <xs:element name="DateFrom" type="xs:dateTime" />
+      <xs:element name="DateTo" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="InternalOrganisationID" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="InternalOrganisationName" nillable="true" type="xs:string" />
+      <xs:element name="SortBy" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TransactionTypes" nillable="true" type="tns:ArrayOfCollectionItem" />
+      <xs:element minOccurs="0" name="UserType" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AccountRegistrationActivityReportCriteriaType" nillable="true" type="tns:AccountRegistrationActivityReportCriteriaType" />
+  <xs:complexType name="CollateralRegistrationDueToExpire">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CollateralClassType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CollateralType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="GivingOfNoticeIdentifier" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Grantors" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="GrantorsList" nillable="true" type="tns:ArrayOfGrantor" />
+      <xs:element name="IsAccessRestricted" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsMigrated" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsTransitional" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="RegistrationEndTime" nillable="true" type="xs:dateTime" />
+      <xs:element name="RegistrationNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SecuredPartyGroupNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SerialNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SerialNumberType" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CollateralRegistrationDueToExpire" nillable="true" type="tns:CollateralRegistrationDueToExpire" />
+  <xs:complexType name="VexatiousRegistrationsReportOutputType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseReportOutputType">
+        <xs:sequence>
+          <xs:element name="ReportCriteria" nillable="true" type="tns:VexatiousRegistrationsReportCriteriaType" />
+          <xs:element minOccurs="0" name="VexatiousRegistrationGrantors" nillable="true" type="tns:ArrayOfIndividualGrantor" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="VexatiousRegistrationsReportOutputType" nillable="true" type="tns:VexatiousRegistrationsReportOutputType" />
+  <xs:complexType name="VexatiousRegistrationsReportCriteriaType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="SearchGrantors" nillable="true" type="tns:ArrayOfIndividualGrantorCriteria" />
+      <xs:element name="SortBy" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="VexatiousRegistrationsReportCriteriaType" nillable="true" type="tns:VexatiousRegistrationsReportCriteriaType" />
+  <xs:complexType name="ArrayOfIndividualGrantorCriteria">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="IndividualGrantorCriteria" nillable="true" type="tns:IndividualGrantorCriteria" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfIndividualGrantorCriteria" nillable="true" type="tns:ArrayOfIndividualGrantorCriteria" />
+  <xs:complexType name="IndividualGrantorCriteria">
+    <xs:sequence>
+      <xs:element name="DateOfBirth" nillable="true" type="xs:dateTime" />
+      <xs:element name="FamilyName" nillable="true" type="xs:string" />
+      <xs:element name="GivenName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="IndividualGrantorCriteria" nillable="true" type="tns:IndividualGrantorCriteria" />
+  <xs:complexType name="ArrayOfIndividualGrantor">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="IndividualGrantor" nillable="true" type="tns:IndividualGrantor" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfIndividualGrantor" nillable="true" type="tns:ArrayOfIndividualGrantor" />
+  <xs:complexType name="RegistrationsDueToExpireReportOutputType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseReportOutputType">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CollateralRegistrations" nillable="true" type="tns:ArrayOfCollateralRegistrationDueToExpire" />
+          <xs:element name="ReportCriteria" nillable="true" type="tns:RegistrationsDueToExpireReportCriteriaType" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="RegistrationsDueToExpireReportOutputType" nillable="true" type="tns:RegistrationsDueToExpireReportOutputType" />
+  <xs:complexType name="ArrayOfCollateralRegistrationDueToExpire">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CollateralRegistrationDueToExpire" nillable="true" type="tns:CollateralRegistrationDueToExpire" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCollateralRegistrationDueToExpire" nillable="true" type="tns:ArrayOfCollateralRegistrationDueToExpire" />
+  <xs:complexType name="RegistrationsDueToExpireReportCriteriaType">
+    <xs:sequence>
+      <xs:element name="DueToExpireFromDate" type="xs:dateTime" />
+      <xs:element name="DueToExpireToDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="SecuredPartyGroupAccessCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SecuredPartyGroupNumber" nillable="true" type="xs:string" />
+      <xs:element name="SortBy" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RegistrationsDueToExpireReportCriteriaType" nillable="true" type="tns:RegistrationsDueToExpireReportCriteriaType" />
+  <xs:complexType name="SearchActivityReportCriteriaType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AccountCustomerNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CasualUserCreditCardNumberFirst6Digits" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CasualUserCreditCardNumberLast3Digits" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="InternalOrganisationName" nillable="true" type="xs:string" />
+      <xs:element name="SearchActivityDateFrom" type="xs:dateTime" />
+      <xs:element name="SearchActivityDateTo" type="xs:dateTime" />
+      <xs:element name="SortBy" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserType" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SearchActivityReportCriteriaType" nillable="true" type="tns:SearchActivityReportCriteriaType" />
+  <xs:complexType name="RegistrationWithToken">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AreAssetsSubjectToControl" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AreProceedsClaimed" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AttachmentCount" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="ChangeNumber" nillable="true" type="xs:long" />
+      <xs:element minOccurs="0" name="ChangeTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="CollateralClass" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CollateralDescription" nillable="true" type="xs:string" />
+      <xs:element name="CollateralRegistrationToken" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CollateralType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EarlierRegistrationNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="GivingOfNoticeIdentifier" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Grantors" nillable="true" type="tns:ArrayOfGrantor" />
+      <xs:element minOccurs="0" name="GrantorsText" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsAccessRestricted" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsInventory" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsMigrated" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsPMSI" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsPreparatory" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsSerialised" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsSubordinate" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsTransitional" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ProceedsClaimedDescription" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RegistrationEndTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="RegistrationKind" nillable="true" type="xs:string" />
+      <xs:element name="RegistrationNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RegistrationStartTime" nillable="true" type="xs:dateTime" />
+      <xs:element name="SecuredPartyGroupNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SerialNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SerialNumberType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SourceRegister" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RegistrationWithToken" nillable="true" type="tns:RegistrationWithToken" />
+  <xs:complexType name="RegistrationsWithTokensReportCriteriaType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="SecuredPartyGroupAccessCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SecuredPartyGroupNumber" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RegistrationsWithTokensReportCriteriaType" nillable="true" type="tns:RegistrationsWithTokensReportCriteriaType" />
+  <xs:complexType name="RegistrationsWithTokensReportOutputType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseReportOutputType">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="RegistrationsWithTokens" nillable="true" type="tns:ArrayOfRegistrationWithToken" />
+          <xs:element name="ReportCriteria" nillable="true" type="tns:RegistrationsWithTokensReportCriteriaType" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="RegistrationsWithTokensReportOutputType" nillable="true" type="tns:RegistrationsWithTokensReportOutputType" />
+  <xs:complexType name="ArrayOfRegistrationWithToken">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="RegistrationWithToken" nillable="true" type="tns:RegistrationWithToken" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfRegistrationWithToken" nillable="true" type="tns:ArrayOfRegistrationWithToken" />
+  <xs:complexType name="SearchActivity">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AccountCustomerNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CasualUserCreditCardMask" nillable="true" type="xs:string" />
+      <xs:element name="Channel" nillable="true" type="xs:string" />
+      <xs:element name="FeesTotal" nillable="true" type="xs:string" />
+      <xs:element name="GrantorSearchCount" nillable="true" type="xs:string" />
+      <xs:element name="GrantorSearchFee" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="InternalOrganisationName" nillable="true" type="xs:string" />
+      <xs:element name="OrdinalSearchCount" nillable="true" type="xs:string" />
+      <xs:element name="OrdinalSearchFee" nillable="true" type="xs:string" />
+      <xs:element name="RegistrationNumberSearchCount" nillable="true" type="xs:string" />
+      <xs:element name="RegistrationNumberSearchFee" nillable="true" type="xs:string" />
+      <xs:element name="SearchesTotal" nillable="true" type="xs:string" />
+      <xs:element name="SerialNumberSearchCount" nillable="true" type="xs:string" />
+      <xs:element name="SerialNumberSearchFee" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserID" nillable="true" type="xs:string" />
+      <xs:element name="UserType" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SearchActivity" nillable="true" type="tns:SearchActivity" />
+  <xs:complexType name="TransactionReconciliationReportOutputType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseReportOutputType">
+        <xs:sequence>
+          <xs:element name="ReportCriteria" nillable="true" type="tns:TransactionReconciliationReportCriteriaType" />
+          <xs:element minOccurs="0" name="TransactionReconciliationItems" nillable="true" type="tns:ArrayOfTransactionReconciliations" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="TransactionReconciliationReportOutputType" nillable="true" type="tns:TransactionReconciliationReportOutputType" />
+  <xs:complexType name="TransactionReconciliationReportCriteriaType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AccountCustomerNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CreditCardNumberFirst6Digits" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CreditCardNumberLast3Digits" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ReceiptNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TransactionAmountFrom" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="TransactionAmountTo" nillable="true" type="xs:int" />
+      <xs:element name="TransactionArea" nillable="true" type="xs:string" />
+      <xs:element name="TransactionDateFrom" type="xs:dateTime" />
+      <xs:element name="TransactionDateTo" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="TransactionID" nillable="true" type="xs:long" />
+      <xs:element name="TransactionTypes" nillable="true" type="tns:ArrayOfCollectionItem" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TransactionReconciliationReportCriteriaType" nillable="true" type="tns:TransactionReconciliationReportCriteriaType" />
+  <xs:complexType name="ArrayOfTransactionReconciliations">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="TransactionReconciliations" nillable="true" type="tns:TransactionReconciliations" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTransactionReconciliations" nillable="true" type="tns:ArrayOfTransactionReconciliations" />
+  <xs:complexType name="SecuredPartyGroupRegistrationActivityReportOutputType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseReportOutputType">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CollateralRegistrationTransactions" nillable="true" type="tns:ArrayOfSecuredPartyGroupRegistrationActivity" />
+          <xs:element name="ReportCriteria" nillable="true" type="tns:SecuredPartyGroupRegistrationActivityReportCriteriaType" />
+          <xs:element minOccurs="0" name="ShowRegistrationKind" type="xs:boolean" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="SecuredPartyGroupRegistrationActivityReportOutputType" nillable="true" type="tns:SecuredPartyGroupRegistrationActivityReportOutputType" />
+  <xs:complexType name="ArrayOfSecuredPartyGroupRegistrationActivity">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SecuredPartyGroupRegistrationActivity" nillable="true" type="tns:SecuredPartyGroupRegistrationActivity" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSecuredPartyGroupRegistrationActivity" nillable="true" type="tns:ArrayOfSecuredPartyGroupRegistrationActivity" />
+  <xs:complexType name="SecuredPartyGroupRegistrationActivityReportCriteriaType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CollateralClasses" nillable="true" type="tns:ArrayOfCollectionItem" />
+      <xs:element minOccurs="0" name="CollateralSubClasses" nillable="true" type="tns:ArrayOfCollectionItem" />
+      <xs:element minOccurs="0" name="CollateralTypes" nillable="true" type="tns:ArrayOfCollectionItem" />
+      <xs:element name="RegistrationActivityFromDate" type="xs:dateTime" />
+      <xs:element name="RegistrationActivityToDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="RegistrationKinds" nillable="true" type="tns:ArrayOfCollectionItem" />
+      <xs:element minOccurs="0" name="SecuredPartyGroupAccessCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SecuredPartyGroupNumber" nillable="true" type="xs:string" />
+      <xs:element name="SortBy" nillable="true" type="xs:string" />
+      <xs:element name="SubSortByChangeNumber" type="xs:boolean" />
+      <xs:element name="TransactionTypes" nillable="true" type="tns:ArrayOfCollectionItem" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SecuredPartyGroupRegistrationActivityReportCriteriaType" nillable="true" type="tns:SecuredPartyGroupRegistrationActivityReportCriteriaType" />
+  <xs:complexType name="BPointTransactionsReportOutputType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseReportOutputType">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="BPointTransactions" nillable="true" type="tns:ArrayOfBPointTransaction" />
+          <xs:element name="ReportCriteria" nillable="true" type="tns:BPointTransactionsReportCriteriaType" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="BPointTransactionsReportOutputType" nillable="true" type="tns:BPointTransactionsReportOutputType" />
+  <xs:complexType name="ArrayOfBPointTransaction">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="BPointTransaction" nillable="true" type="tns:BPointTransaction" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfBPointTransaction" nillable="true" type="tns:ArrayOfBPointTransaction" />
+  <xs:complexType name="BPointTransaction">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AccountCustomerNumber" nillable="true" type="xs:string" />
+      <xs:element name="Amount" nillable="true" type="xs:string" />
+      <xs:element name="AuthBPointErrorText" nillable="true" type="xs:string" />
+      <xs:element name="AuthBPointResponseCode" nillable="true" type="xs:string" />
+      <xs:element name="AuthRequestDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element name="AuthResponseDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element name="AuthStatus" nillable="true" type="xs:string" />
+      <xs:element name="MaskedCreditCardNumber" nillable="true" type="xs:string" />
+      <xs:element name="OverallTransactionStatus" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PayBPointErrorText" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PayBPointResponseCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PayRequestDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="PayResponseDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="PayStatus" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TransactionId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="VerifyBPointErrorText" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="VerifyBPointResponseCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="VerifyRequestDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="VerifyResponseDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="VerifyStatus" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BPointTransaction" nillable="true" type="tns:BPointTransaction" />
+  <xs:complexType name="OrganisationRegistrationActivityReportOutputType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseReportOutputType">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CollateralRegistrationGrantors" nillable="true" type="tns:ArrayOfCollateralRegistrationGrantor" />
+          <xs:element name="CountOfRegistrations" type="xs:int" />
+          <xs:element name="ReportCriteria" nillable="true" type="tns:OrganisationRegistrationActivityReportCriteriaType" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="OrganisationRegistrationActivityReportOutputType" nillable="true" type="tns:OrganisationRegistrationActivityReportOutputType" />
+  <xs:complexType name="ArrayOfCollateralRegistrationGrantor">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CollateralRegistrationGrantor" nillable="true" type="tns:CollateralRegistrationGrantor" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCollateralRegistrationGrantor" nillable="true" type="tns:ArrayOfCollateralRegistrationGrantor" />
+  <xs:complexType name="OrganisationRegistrationActivityReportCriteriaType">
+    <xs:sequence>
+      <xs:element name="CreatedFromDate" type="xs:dateTime" />
+      <xs:element name="CreatedToDate" type="xs:dateTime" />
+      <xs:element name="SortBy" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="OrganisationRegistrationActivityReportCriteriaType" nillable="true" type="tns:OrganisationRegistrationActivityReportCriteriaType" />
+  <xs:complexType name="SearchActivityReportOutputType">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseReportOutputType">
+        <xs:sequence>
+          <xs:element name="CountOfSearches" type="xs:int" />
+          <xs:element name="ReportCriteria" nillable="true" type="tns:SearchActivityReportCriteriaType" />
+          <xs:element minOccurs="0" name="SearchActivities" nillable="true" type="tns:ArrayOfSearchActivity" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="SearchActivityReportOutputType" nillable="true" type="tns:SearchActivityReportOutputType" />
+  <xs:complexType name="ArrayOfSearchActivity">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SearchActivity" nillable="true" type="tns:SearchActivity" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSearchActivity" nillable="true" type="tns:ArrayOfSearchActivity" />
+</xs:schema>
